@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: matchfourinarow
+
+server:
+  port: 8080
+
+logging:
+  level:
+    me.github.emirhanunsal: DEBUG
+    org.springframework.web: INFO
+    org.springframework.messaging: DEBUG
