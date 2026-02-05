@@ -4,6 +4,8 @@ spring:
 
 server:
   port: 8080
+  servlet:
+    context-path: /match-four-in-a-row
 
 logging:
   level:
