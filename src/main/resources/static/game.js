@@ -1,3 +1,5 @@
+const BASE_URL = '/match-four-in-a-row';
+
 let stompClient = null;
 let currentRoomCode = null;
 let currentPlayerId = null;
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function createNewGame() {
     try {
-        const response = await fetch('/api/rooms', {
+        const response = await fetch(`${BASE_URL}/api/rooms`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -64,7 +66,7 @@ async function joinGame() {
     try {
         currentPlayerId = generatePlayerId();
         
-        const response = await fetch(`/api/rooms/${roomCode}/join`, {
+        const response = await fetch(`${BASE_URL}/api/rooms/${roomCode}/join`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -93,7 +95,7 @@ async function joinGame() {
 }
 
 function connectWebSocket() {
-    const socket = new SockJS('/ws');
+    const socket = new SockJS(`${BASE_URL}/ws`);
     stompClient = Stomp.over(socket);
     
     stompClient.connect({}, (frame) => {
