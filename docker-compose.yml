@@ -1,0 +1,15 @@
+services:
+  match-four:
+    build: .
+    container_name: match-four-in-a-row
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: unless-stopped
+    networks:
+      - match-four-network
+
+networks:
+  match-four-network:
+    driver: bridge
